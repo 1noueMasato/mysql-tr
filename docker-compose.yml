@@ -1,0 +1,18 @@
+# Use root/example as user/password credentials
+version: '3.8'
+
+services:
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mysql_tr
+      MYSQL_USER: tr_user
+      MYSQL_PASSWORD: tr_pass
+    ports:  
+      - "13306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql # 前がローカル。後ろがコンテナの中。この二つのディレクトリを同期する
+    # (this is just an example, not intended to be a production configuration)
